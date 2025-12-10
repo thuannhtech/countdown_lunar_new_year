@@ -1,22 +1,35 @@
 <!doctype html>
 <html lang="vi">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-   <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <style>
-    :root{--bg:#0b1020; --card:#0f1724; --accent:#ffb703}
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    :root {
+      --bg: #0b1020;
+      --card: #0f1724;
+      --accent: #ffb703
+    }
 
-    body{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: url("./wwwroot/sap-tet-roi.jpg")
-                 center/cover no-repeat fixed;
-      color:#fff;
-      overflow-x:hidden;
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url("https://res.cloudinary.com/duexspnwe/image/upload/v1765338533/sap-tet-roi_m2ecpu.jpg") center/cover no-repeat fixed;
+      color: #fff;
+      overflow-x: hidden;
     }
 
     #fireworksCanvas {
@@ -29,66 +42,114 @@
       z-index: 1;
     }
 
-    .wrap{
-      width:min(980px,95%);
-      padding:28px;
-      border-radius:18px;
-      background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));
-      box-shadow:0 10px 35px rgba(2,6,23,0.7);
-      position:relative;
-      overflow:hidden;
-      z-index:2;
+    .wrap {
+      width: min(980px, 95%);
+      padding: 28px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+      box-shadow: 0 10px 35px rgba(2, 6, 23, 0.7);
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
     }
 
-    .blossom{
-      position:absolute;
-      right:-120px;
-      top:-80px;
-      width:420px;
-      height:420px;
-      background:radial-gradient(circle at 30% 30%, rgba(255,192,203,0.18), transparent 20%),
-                 radial-gradient(circle at 70% 70%, rgba(255,240,240,0.06), transparent 40%);
-      transform:rotate(15deg);
-      filter:blur(6px);
-      opacity:0.9;
+    .blossom {
+      position: absolute;
+      right: -120px;
+      top: -80px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 192, 203, 0.18), transparent 20%),
+        radial-gradient(circle at 70% 70%, rgba(255, 240, 240, 0.06), transparent 40%);
+      transform: rotate(15deg);
+      filter: blur(6px);
+      opacity: 0.9;
     }
 
-    h1{margin:0;font-size:28px;letter-spacing:0.4px}
-    p.lead{color:#fff;margin:8px 0 18px}
-
-    .card{
-      display:flex;
-      gap:16px;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      border-radius:12px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-      backdrop-filter:blur(6px)
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 0.4px
     }
 
-    .segment{min-width:90px;padding:12px 14px;border-radius:10px;text-align:center;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.0));}
-    .num{font-size:40px;font-weight:700;line-height:1}
-    .label{font-size:12px;color:#cbd5e1;margin-top:6px}
+    p.lead {
+      color: #fff;
+      margin: 8px 0 18px
+    }
 
-    .meta{display:flex;gap:18px;align-items:center;justify-content:center;margin-top:14px;color:#fff;font-size:13px}
+    .card {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+      backdrop-filter: blur(6px)
+    }
 
-    footer{margin-top:18px;text-align:center;color:#fff;font-size:13px}
+    .segment {
+      min-width: 90px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.0));
+    }
 
-    @media (max-width:520px){
-      .card{gap:10px}
-      .num{font-size:30px}
-      .segment{min-width:64px;padding:10px}
+    .num {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1
+    }
+
+    .label {
+      font-size: 12px;
+      color: #cbd5e1;
+      margin-top: 6px
+    }
+
+    .meta {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      color: #fff;
+      font-size: 13px
+    }
+
+    footer {
+      margin-top: 18px;
+      text-align: center;
+      color: #fff;
+      font-size: 13px
+    }
+
+    @media (max-width:520px) {
+      .card {
+        gap: 10px
+      }
+
+      .num {
+        font-size: 30px
+      }
+
+      .segment {
+        min-width: 64px;
+        padding: 10px
+      }
     }
   </style>
-<!-- SEO Title -->
+  <!-- SEO Title -->
   <title>Countdown Tết 2026 – Đếm Ngược Đến Mùng 1 Tết Âm Lịch</title>
 
   <!-- SEO Description -->
-  <meta name="description" content="Đếm ngược đến Tết Nguyên Đán 2026. Countdown thời gian còn lại đến Mùng 1 Tết – giao diện đẹp, pháo hoa, nhạc Tết và lời chúc may mắn. Chúc mừng năm mới!">
+  <meta name="description"
+    content="Đếm ngược đến Tết Nguyên Đán 2026. Countdown thời gian còn lại đến Mùng 1 Tết – giao diện đẹp, pháo hoa, nhạc Tết và lời chúc may mắn. Chúc mừng năm mới!">
 
   <!-- Keywords -->
-  <meta name="keywords" content="countdown Tết, đếm ngược Tết, Tết 2026, mùng 1 Tết, lịch Tết, chúc mừng năm mới, pháo hoa Tết, đồng hồ đếm ngược, Tết Nguyên Đán">
+  <meta name="keywords"
+    content="countdown Tết, đếm ngược Tết, Tết 2026, mùng 1 Tết, lịch Tết, chúc mừng năm mới, pháo hoa Tết, đồng hồ đếm ngược, Tết Nguyên Đán">
 
   <!-- Author -->
   <meta name="author" content="you me" />
@@ -99,7 +160,8 @@
   <!-- Open Graph (Facebook / Zalo) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Countdown Tết 2026 – Đếm Ngược Đến Mùng 1 Tết Âm Lịch" />
-  <meta property="og:description" content="Cùng đếm ngược đến Tết Nguyên Đán 2026 với pháo hoa, nhạc nền và lời chúc Tết ngẫu nhiên mỗi lần mở trang." />
+  <meta property="og:description"
+    content="Cùng đếm ngược đến Tết Nguyên Đán 2026 với pháo hoa, nhạc nền và lời chúc Tết ngẫu nhiên mỗi lần mở trang." />
   <meta property="og:image" content="./wwwroot/tet-cover.jpg" />
   <meta property="og:url" content="https://your-domain.com/countdown-tet-2026" />
   <meta property="og:site_name" content="Countdown Tết 2026" />
@@ -111,7 +173,8 @@
   <meta name="twitter:image" content="./wwwroot/tet-cover.jpg" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="./wwwroot/favicon.png">
+  <link rel="icon" type="image/png"
+    href="https://res.cloudinary.com/duexspnwe/image/upload/v1765338534/favicon_rqdcdj.png">
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -145,7 +208,12 @@
 
     <!-- YouTube nhạc nền -->
     <div style="margin:16px 0; text-align:center;">
-	<iframe width="100%" height="300" src="https://www.youtube.com/embed/-0xf-CW4naw?list=RD-0xf-CW4naw" title="Nhạc Tết Chill 2026 - Tết Này Con Sẽ Về - Nhạc Xuân Chill Nghe Là Muốn Về Nhà" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="100%" height="300"
+        src="https://www.youtube.com/embed/-0xf-CW4naw?list=RD-0xf-CW4naw&autoplay=1&mute=1"
+        title="Nhạc Tết Chill 2026 - Tết Này Con Sẽ Về - Nhạc Xuân Chill Nghe Là Muốn Về Nhà" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+      </iframe>
     </div>
 
     <section class="card" aria-live="polite">
@@ -171,8 +239,8 @@
       <div id="targetLabel">Mục tiêu: <strong>Mùng 1 Tết — 17/02/2026</strong> (00:00:00 Asia/Ho_Chi_Minh)</div>
     </div>
 
-    <footer >Made with ❤️ — Chúc mừng năm mới!</footer>
-	<footer id="tetFooter">Made with ❤️ — Chúc mừng năm mới!</footer>
+    <footer>Made with ❤️ — Chúc mừng năm mới!</footer>
+    <footer id="tetFooter">Made with ❤️ — Chúc mừng năm mới!</footer>
   </div>
 
   <script>
@@ -193,7 +261,7 @@
         return;
       }
 
-      const days = Math.floor(diff / (24*3600));
+      const days = Math.floor(diff / (24 * 3600));
       diff -= days * 24 * 3600;
       const hours = Math.floor(diff / 3600);
       diff -= hours * 3600;
@@ -201,9 +269,9 @@
       const seconds = diff - minutes * 60;
 
       daysEl.textContent = days;
-      hoursEl.textContent = String(hours).padStart(2,'0');
-      minutesEl.textContent = String(minutes).padStart(2,'0');
-      secondsEl.textContent = String(seconds).padStart(2,'0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
     }
 
     setInterval(update, 250);
@@ -237,7 +305,7 @@
         this.angle = Math.atan2(this.targetY - this.y, this.targetX - this.x);
         this.exploded = false;
         this.particles = [];
-        this.color = `hsl(${Math.floor(random(0,360))}, 90%, 60%)`;
+        this.color = `hsl(${Math.floor(random(0, 360))}, 90%, 60%)`;
       }
 
       update() {
@@ -318,49 +386,50 @@
     }
 
     animateFireworks();
-	
-	
-const wishes = [
-  // --- LỜI CHÚC NGẮN ---
-  "Chúc mừng năm mới – An khang thịnh vượng!",
-  "Vạn sự như ý – Tỷ sự như mơ!",
-  "Tấn tài – Tấn lộc – Tấn bình an!",
-  "Năm mới phú quý – Bình an – May mắn!",
-  "Chúc bạn đong đầy hạnh phúc – Trọn vẹn yêu thương!",
-  "Xuân an vui – Tết đong đầy!",
 
-  // --- LỜI CHÚC DÀI ---
-  "Năm mới chúc bạn sức khỏe dồi dào, công việc thuận lợi, tiền bạc dồi dào, gia đình luôn hạnh phúc!",
-  "Chúc năm mới mang đến thành công rực rỡ, hạnh phúc chan hòa và mọi điều như ý đến với bạn!",
-  "Tết đến rộn ràng – Mong bạn một năm bình an, tài lộc đầy nhà, nụ cười luôn nở trên môi!",
-  "Năm mới – Khởi đầu mới: Chúc bạn mạnh khỏe, may mắn và đạt được mọi mục tiêu!",
 
-  // --- THƠ TẾT 4 CÂU ---
-  "Xuân sang tài lộc tới,\nPhúc lộc ghé từng nhà.\nNăm mới bình an nhé,\nVạn sự sẽ hoan ca!",
-  "Tết đến xuân về rồi,\nChúc bạn nhiều niềm vui.\nHạnh phúc luôn rạng rỡ,\nMay mắn mãi theo sui!",
-  "Mai vàng khoe sắc thắm,\nĐào đỏ nở quanh sân.\nChúc bạn năm mới đẹp,\nVui khỏe phúc ngập tràn!",
-  "Nắng xuân vừa hé cửa,\nLộc mới đến mọi nhà.\nTết này thêm hạnh phúc,\nAn yên mãi nở hoa!",
+    const wishes = [
+      // --- LỜI CHÚC NGẮN ---
+      "Chúc mừng năm mới – An khang thịnh vượng!",
+      "Vạn sự như ý – Tỷ sự như mơ!",
+      "Tấn tài – Tấn lộc – Tấn bình an!",
+      "Năm mới phú quý – Bình an – May mắn!",
+      "Chúc bạn đong đầy hạnh phúc – Trọn vẹn yêu thương!",
+      "Xuân an vui – Tết đong đầy!",
 
-  // --- THƠ LỤC BÁT ---
-  "Xuân sang phúc lộc dạt dào,\nChúc cho hạnh phúc bước vào thênh thang.",
-  "Năm mới tài lộc trời ban,\nVạn điều may mắn ngập tràn quanh ta.",
-  "Xuân này hạnh phúc nở hoa,\nGia đình ấm áp – thật là tuyệt vui!",
+      // --- LỜI CHÚC DÀI ---
+      "Năm mới chúc bạn sức khỏe dồi dào, công việc thuận lợi, tiền bạc dồi dào, gia đình luôn hạnh phúc!",
+      "Chúc năm mới mang đến thành công rực rỡ, hạnh phúc chan hòa và mọi điều như ý đến với bạn!",
+      "Tết đến rộn ràng – Mong bạn một năm bình an, tài lộc đầy nhà, nụ cười luôn nở trên môi!",
+      "Năm mới – Khởi đầu mới: Chúc bạn mạnh khỏe, may mắn và đạt được mọi mục tiêu!",
 
-  // --- CHÚC VUI – HÀI HƯỚC ---
-  "Chúc bạn năm mới… tiền vô bồ bồ, tình vô bờ bến, công việc thì vô đối!",
-  "Tết đến khỏi lo nghĩ – tiền tiêu không hết thì để tôi tiêu phụ!",
-  "Chúc năm mới gầy bớt chút… nhưng ví thì dày thêm chút!",
-  "Năm mới chúc bạn ăn không lo mập – ngủ không lo muộn – tiền không lo thiếu!",
-  "Chúc bạn năm mới làm đâu thắng đó – ăn đâu trúng đó – ngủ đâu cũng ngon!"
-];
+      // --- THƠ TẾT 4 CÂU ---
+      "Xuân sang tài lộc tới,\nPhúc lộc ghé từng nhà.\nNăm mới bình an nhé,\nVạn sự sẽ hoan ca!",
+      "Tết đến xuân về rồi,\nChúc bạn nhiều niềm vui.\nHạnh phúc luôn rạng rỡ,\nMay mắn mãi theo sui!",
+      "Mai vàng khoe sắc thắm,\nĐào đỏ nở quanh sân.\nChúc bạn năm mới đẹp,\nVui khỏe phúc ngập tràn!",
+      "Nắng xuân vừa hé cửa,\nLộc mới đến mọi nhà.\nTết này thêm hạnh phúc,\nAn yên mãi nở hoa!",
 
-// random + giữ xuống dòng cho thơ
-function setRandomWish() {
-  const wish = wishes[Math.floor(Math.random() * wishes.length)];
-  document.getElementById("tetFooter").innerHTML = wish.replace(/\n/g, "<br>");
-}
+      // --- THƠ LỤC BÁT ---
+      "Xuân sang phúc lộc dạt dào,\nChúc cho hạnh phúc bước vào thênh thang.",
+      "Năm mới tài lộc trời ban,\nVạn điều may mắn ngập tràn quanh ta.",
+      "Xuân này hạnh phúc nở hoa,\nGia đình ấm áp – thật là tuyệt vui!",
 
-setRandomWish();
+      // --- CHÚC VUI – HÀI HƯỚC ---
+      "Chúc bạn năm mới… tiền vô bồ bồ, tình vô bờ bến, công việc thì vô đối!",
+      "Tết đến khỏi lo nghĩ – tiền tiêu không hết thì để tôi tiêu phụ!",
+      "Chúc năm mới gầy bớt chút… nhưng ví thì dày thêm chút!",
+      "Năm mới chúc bạn ăn không lo mập – ngủ không lo muộn – tiền không lo thiếu!",
+      "Chúc bạn năm mới làm đâu thắng đó – ăn đâu trúng đó – ngủ đâu cũng ngon!"
+    ];
+
+    // random + giữ xuống dòng cho thơ
+    function setRandomWish() {
+      const wish = wishes[Math.floor(Math.random() * wishes.length)];
+      document.getElementById("tetFooter").innerHTML = wish.replace(/\n/g, "<br>");
+    }
+
+    setRandomWish();
   </script>
 </body>
+
 </html>
