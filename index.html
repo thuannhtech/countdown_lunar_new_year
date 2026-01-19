@@ -6,9 +6,32 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <title>Countdown Tết Bính Ngọ 2026 – Xuân Hy Vọng</title>
+  <title>Countdown Tết Bính Ngọ 2026 – Đếm Ngược Giao Thừa & Lịch Âm</title>
   <meta name="description"
-    content="Chào đón Xuân Bính Ngọ 2026. Đếm ngược đến giao thừa với giao diện sang trọng, hoa mai rơi và hái lộc đầu xuân.">
+    content="Đếm ngược đến Tết Nguyên Đán Bính Ngọ 2026. Xem lịch âm, hái lộc online, tạo thiệp chúc Tết cá nhân hóa và xem tử vi 12 con giáp 2026 cực chuẩn.">
+  <meta name="keywords"
+    content="countdown tết 2026, đếm ngược tết bính ngọ, lịch âm 2026, hái lộc online, tử vi 12 con giáp 2026, thiệp chúc tết 2026">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook / Zalo -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Countdown Tết Bính Ngọ 2026 – Xuân Hy Vọng Pro Max">
+  <meta property="og:description"
+    content="Chào đón Xuân Bính Ngọ 2026 với trải nghiệm đếm ngược độc bản: Hái lộc, xem tử vi và tạo thiệp chúc Tết.">
+  <meta property="og:image" content="bg.png">
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Countdown Tết Bính Ngọ 2026",
+    "description": "Ứng dụng đếm ngược Tết Nguyên Đán 2026, tích hợp lịch âm, hái lộc và tử vi.",
+    "url": "https://yourdomain.com/",
+    "applicationCategory": "EntertainmentApplication",
+    "operatingSystem": "Web"
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,13 +39,14 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;600;700&display=swap"
     rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
     :root {
       --accent: #D4AF37;
       --bg-dark: #0A0A0A;
       --text-gold: #F3E5AB;
-      --glass: rgba(15, 5, 5, 0.85);
+      --glass: rgba(15, 5, 5, 0.88);
       --glass-border: rgba(212, 175, 55, 0.25);
       --shadow-premium: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(139, 0, 0, 0.15);
       --lixi: #C0392B;
@@ -53,7 +77,7 @@
       position: relative;
     }
 
-    /* Background Layers */
+    /* Background & Overlay */
     .bg-image {
       position: fixed;
       inset: 0;
@@ -115,7 +139,7 @@
       }
     }
 
-    /* Main Content */
+    /* Layout */
     .container {
       position: relative;
       z-index: 10;
@@ -141,7 +165,7 @@
       -webkit-backdrop-filter: blur(35px);
       border: 1px solid var(--glass-border);
       border-radius: 40px;
-      padding: 4.5rem 3rem;
+      padding: 4rem 3rem;
       box-shadow: var(--shadow-premium);
       text-align: center;
       position: relative;
@@ -150,23 +174,23 @@
 
     .ornament {
       position: absolute;
-      width: 150px;
-      height: 150px;
-      border: 3px solid var(--accent);
-      opacity: 0.25;
+      width: 120px;
+      height: 120px;
+      border: 2.5px solid var(--accent);
+      opacity: 0.2;
       pointer-events: none;
     }
 
     .ornament-tl {
-      top: 30px;
-      left: 30px;
+      top: 25px;
+      left: 25px;
       border-right: 0;
       border-bottom: 0;
     }
 
     .ornament-br {
-      bottom: 30px;
-      right: 30px;
+      bottom: 25px;
+      right: 25px;
       border-left: 0;
       border-top: 0;
     }
@@ -187,10 +211,6 @@
       transition: transform 12s ease-out;
     }
 
-    .centerpiece-box:hover .centerpiece-img {
-      transform: scale(1.15);
-    }
-
     h1 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.2rem, 5vw, 4rem);
@@ -199,91 +219,109 @@
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 6px;
-      text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
       line-height: 1.2;
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
     }
 
     .subtitle {
       font-size: clamp(0.9rem, 1.2vw, 1.1rem);
       color: var(--text-gold);
-      margin-top: 1rem;
-      margin-bottom: 2.5rem;
+      margin: 1rem 0 2.5rem;
       letter-spacing: 4px;
       font-weight: 300;
       text-transform: uppercase;
       opacity: 0.8;
-      line-height: 1.5;
     }
 
     .countdown-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 3.5rem;
+      gap: 1rem;
+      margin-bottom: 3rem;
     }
 
     .unit-box {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 2.5rem 0.5rem;
-      border-radius: 28px;
-      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      padding: 2.2rem 0.5rem;
+      border-radius: 24px;
+      transition: all 0.5s;
       cursor: pointer;
     }
 
     .unit-box:hover {
-      background: rgba(212, 175, 55, 0.15);
+      background: rgba(212, 175, 55, 0.1);
       border-color: var(--accent);
-      transform: translateY(-15px);
-      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+      transform: translateY(-10px);
     }
 
     .val {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2rem, 4vw, 4rem);
       font-weight: 600;
-      line-height: 1.1;
+      line-height: 1;
       color: white;
       display: block;
     }
 
     .lbl {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 4px;
       color: var(--accent);
       font-weight: 700;
-      margin-top: 1rem;
+      margin-top: 0.8rem;
     }
 
-    .info-cluster {
+    /* Actions & Tools */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      width: 100%;
+      margin-top: 2.5rem;
+    }
+
+    .btn-premium {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 1rem;
+      border-radius: 18px;
+      color: white;
       display: flex;
-      flex-direction: column;
-      gap: 2rem;
       align-items: center;
-      border-top: 1px solid rgba(212, 175, 55, 0.2);
-      padding-top: 2.5rem;
+      justify-content: center;
+      gap: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .btn-premium:hover {
+      background: var(--accent);
+      color: black;
+      border-color: var(--accent);
+      transform: scale(1.05);
     }
 
     .date-badge {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #eee;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       background: rgba(255, 255, 255, 0.05);
       padding: 1.2rem 2rem;
       border-radius: 30px;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      min-width: 250px;
     }
 
     .lunar-info {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--accent);
       font-style: italic;
-      letter-spacing: 1px;
     }
 
     .personalize-box {
@@ -296,7 +334,7 @@
       width: 100%;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(212, 175, 55, 0.2);
-      padding: 0.8rem 1.5rem;
+      padding: 0.9rem 1.5rem;
       border-radius: 50px;
       color: white;
       text-align: center;
@@ -307,35 +345,10 @@
 
     .name-input:focus {
       border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.1);
       box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
     }
 
-    .audio-player {
-      width: 100%;
-      height: 90px;
-      border-radius: 15px;
-      overflow: hidden;
-      opacity: 0.15;
-      transition: opacity 0.5s;
-    }
-
-    .audio-player:hover {
-      opacity: 0.9;
-    }
-
-    .wish-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.8rem;
-      color: var(--text-gold);
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
-      text-align: center;
-      max-width: 800px;
-      line-height: 1.5;
-    }
-
-    /* Modal & Lixi */
+    /* Lixi & Music Controls */
     #lixiFab {
       position: fixed;
       bottom: 30px;
@@ -355,24 +368,39 @@
       transition: transform 0.3s;
     }
 
-    #lixiFab:hover {
-      transform: scale(1.1);
+    #musicBtn {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s;
     }
 
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7);
+    #musicBtn.playing {
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
       }
 
-      70% {
-        box-shadow: 0 0 0 15px rgba(192, 57, 43, 0);
-      }
-
-      100% {
-        box-shadow: 0 0 0 0 rgba(192, 57, 43, 0);
+      to {
+        transform: rotate(360deg);
       }
     }
 
+    /* Modals */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -394,41 +422,82 @@
     .modal-card {
       background: var(--glass);
       border: 1px solid var(--accent);
-      padding: 3rem;
-      border-radius: 30px;
+      padding: 3rem 2rem;
+      border-radius: 35px;
       text-align: center;
-      max-width: 400px;
+      max-width: 500px;
       width: 90%;
       transform: scale(0.8);
       transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      max-height: 85vh;
+      overflow-y: auto;
     }
 
     .modal-overlay.active .modal-card {
       transform: scale(1);
     }
 
-    .loc-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
-      color: var(--accent);
-      margin: 1.5rem 0;
-      font-weight: 700;
+    .zodiac-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
     }
 
-    .close-btn {
-      margin-top: 2rem;
+    .zodiac-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.8rem;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.5rem;
+      border: 1px solid transparent;
+    }
+
+    .zodiac-item:hover {
+      border-color: var(--accent);
+      background: rgba(212, 175, 55, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .zodiac-item.active {
+      border-color: var(--accent);
       background: var(--accent);
       color: black;
-      border: none;
-      padding: 0.8rem 2.5rem;
-      border-radius: 50px;
-      font-weight: 700;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 2px;
     }
 
-    /* Animations */
+    /* Midnight Overlay */
+    #midnightOverlay {
+      position: fixed;
+      inset: 0;
+      background: black;
+      z-index: 9999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hny-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      animation: glow HNY 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowHNY {
+      from {
+        text-shadow: 0 0 20px #fff, 0 0 40px var(--accent);
+      }
+
+      to {
+        text-shadow: 0 0 10px #fff, 0 0 20px var(--accent);
+      }
+    }
+
     @keyframes fadeInScale {
       from {
         opacity: 0;
@@ -448,7 +517,7 @@
 
       .centerpiece-box {
         order: -1;
-        max-width: 500px;
+        max-width: 450px;
         margin: 0 auto;
       }
     }
@@ -459,19 +528,19 @@
       }
 
       h1 {
-        font-size: 3rem;
-        letter-spacing: 4px;
+        font-size: 2.8rem;
       }
 
       .main-card {
         padding: 3rem 1.5rem;
       }
 
-      #lixiFab {
-        width: 60px;
-        height: 60px;
-        bottom: 20px;
-        right: 20px;
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .zodiac-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   </style>
@@ -483,21 +552,27 @@
   <canvas id="blossomCanvas"></canvas>
   <div class="lantern-container" id="lanterns"></div>
 
-  <div id="lixiFab" title="Hái Lộc"><i data-lucide="mail"></i></div>
+  <!-- Special Controls -->
+  <div id="lixiFab" onclick="openLixi()" aria-label="Hái Lộc"><i data-lucide="mail"></i></div>
+  <div id="musicBtn" onclick="toggleMusic()" aria-label="Điều khiển âm nhạc"><i data-lucide="music"></i></div>
 
-  <div class="modal-overlay" id="lixiModal">
-    <div class="modal-card">
-      <i data-lucide="sparkles" style="width: 60px; height: 60px; color: var(--accent);"></i>
-      <h2 style="font-family: 'Cormorant Garamond', serif; color: white; margin-top: 1rem;">Lộc Đầu Xuân Bính Ngọ</h2>
-      <div class="loc-text" id="locResult">Bình An</div>
-      <p style="color: #ccc; font-style: italic;" id="locQuote">"Chúc bạn một năm mới vạn sự hanh thông!"</p>
-      <button class="close-btn" onclick="closeLixi()">Đóng</button>
+  <!-- Midnight Overlay -->
+  <div id="midnightOverlay">
+    <h2 class="hny-text">Chúc Mừng Năm Mới</h2>
+    <div style="font-size: 2rem; color: #fff; margin-top: 2rem; letter-spacing: 10px;">BÍNH NGỌ 2026</div>
+    <button class="btn-premium" style="margin-top: 4rem;" onclick="location.reload()">Quay lại</button>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal-overlay" id="genericModal">
+    <div class="modal-card" id="modalContent">
+      <!-- Dynamic Content -->
     </div>
   </div>
 
   <div class="container">
     <div class="layout-grid">
-      <main class="main-card">
+      <main class="main-card" id="captureRegion">
         <div class="ornament ornament-tl"></div>
         <div class="ornament ornament-br"></div>
 
@@ -506,46 +581,53 @@
           <p class="subtitle">Khởi đầu vạn sự hanh thông</p>
         </header>
 
-        <div class="countdown-row" aria-live="polite">
+        <section class="countdown-row" aria-label="Đồng hồ đếm ngược">
           <div class="unit-box"><span class="val" id="days">0</span><span class="lbl">Ngày</span></div>
           <div class="unit-box"><span class="val" id="hours">00</span><span class="lbl">Giờ</span></div>
           <div class="unit-box"><span class="val" id="minutes">00</span><span class="lbl">Phút</span></div>
           <div class="unit-box"><span class="val" id="seconds">00</span><span class="lbl">Giây</span></div>
-        </div>
+        </section>
 
         <div class="info-cluster">
           <div class="date-badge">
             <div style="display: flex; align-items: center; gap: 0.8rem;">
-              <i data-lucide="calendar" style="width: 20px; color: var(--accent);"></i>
+              <i data-lucide="calendar" style="width: 18px; color: var(--accent);"></i>
               <span>Mùng 1 Tết: <strong>17/02/2026</strong></span>
             </div>
             <div class="lunar-info" id="lunarDateDisplay">Hôm nay: Đang cập nhật...</div>
           </div>
 
           <div class="personalize-box">
-            <input type="text" id="userName" class="name-input" placeholder="Nhập tên bạn..." maxlength="20">
+            <input type="text" id="userName" class="name-input" placeholder="Nhập tên bạn để nhận lời chúc..."
+              aria-label="Nhập tên người dùng">
           </div>
 
-          <div class="audio-player">
-            <iframe width="100%" height="90"
-              src="https://www.youtube.com/embed/-0xf-CW4naw?autoplay=1&mute=0&loop=1&playlist=-0xf-CW4naw"
-              title="Tết Music" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+          <div class="tool-grid">
+            <button class="btn-premium" onclick="openZodiac()"><i data-lucide="star"></i> Tử Vi 2026</button>
+            <button class="btn-premium" onclick="exportCard()"><i data-lucide="download"></i> Tải Thiệp</button>
           </div>
         </div>
       </main>
 
-      <div class="centerpiece-box">
-        <img src="cp.png" alt="Tet Centerpiece" class="centerpiece-img" />
-      </div>
+      <aside class="centerpiece-box">
+        <img src="cp.png" alt="Biểu tượng Tết Bính Ngọ 2026" class="centerpiece-img" />
+      </aside>
     </div>
 
-    <div class="wish-text" id="wishDisplay">Vạn sự như ý – An khang thịnh vượng!</div>
+    <footer class="wish-text" id="wishDisplay">Vạn sự như ý – An khang thịnh vượng!</footer>
+  </div>
+
+  <!-- Hidden YouTube for better control -->
+  <div id="audioHost" style="display:none">
+    <iframe id="player" width="100%" height="90"
+      src="https://www.youtube.com/embed/-0xf-CW4naw?enablejsapi=1&autoplay=1&mute=0&loop=1&playlist=-0xf-CW4naw"
+      frameborder="0"></iframe>
   </div>
 
   <script>
     lucide.createIcons();
 
-    // 1. Countdown Logic
+    // 1. Countdown & Midnight Event
     const targetDate = new Date('2026-02-17T00:00:00+07:00');
     const displays = {
       d: document.getElementById('days'),
@@ -555,130 +637,172 @@
     };
 
     function update() {
-      const diff = targetDate - new Date();
+      const now = new Date();
+      const diff = targetDate - now;
+
       if (diff <= 0) {
-        Object.values(displays).forEach(d => d.textContent = '00');
+        triggerMidnight();
         return;
       }
+
       displays.d.textContent = Math.floor(diff / 86400000);
       displays.h.textContent = Math.floor((diff / 3600000) % 24).toString().padStart(2, '0');
       displays.m.textContent = Math.floor((diff / 60000) % 60).toString().padStart(2, '0');
       displays.s.textContent = Math.floor((diff / 1000) % 60).toString().padStart(2, '0');
     }
-    setInterval(update, 1000);
+    const timer = setInterval(update, 1000);
     update();
 
-    // 2. Falling Blossoms (Hoa Mai)
-    const canvas = document.getElementById("blossomCanvas");
-    const ctx = canvas.getContext("2d");
-    let petals = [];
-    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    window.onresize = resize; resize();
-
-    class Petal {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = -20;
-        this.size = Math.random() * 6 + 4;
-        this.speedY = Math.random() * 1.2 + 0.8;
-        this.speedX = (Math.random() - 0.5) * 1;
-        this.rot = Math.random() * 360;
-        this.rotSpeed = (Math.random() - 0.5) * 2;
-        this.flip = 0;
-        this.flipSpeed = Math.random() * 0.03 + 0.02;
-      }
-      update() {
-        this.y += this.speedY;
-        this.x += this.speedX + Math.sin(this.y / 60) * 0.5;
-        this.rot += this.rotSpeed;
-        this.flip += this.flipSpeed;
-        if (this.y > canvas.height + 20) this.reset();
-      }
-      draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rot * Math.PI / 180);
-        ctx.scale(Math.sin(this.flip), 1);
-        ctx.globalAlpha = 0.8;
-        ctx.fillStyle = "#FFD700";
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(-this.size, -this.size, -this.size, this.size, 0, this.size);
-        ctx.bezierCurveTo(this.size, this.size, this.size, -this.size, 0, 0);
-        ctx.fill();
-        ctx.fillStyle = "#FFA500";
-        ctx.beginPath();
-        ctx.arc(0, this.size / 2, this.size / 4, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-    for (let i = 0; i < 60; i++) petals.push(new Petal());
-    function anim() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      petals.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(anim);
-    }
-    anim();
-
-    // 3. Floating Lanterns
-    const lanternContainer = document.getElementById('lanterns');
-    for (let i = 0; i < 8; i++) {
-      const l = document.createElement('div');
-      l.className = 'lantern';
-      l.style.left = Math.random() * 100 + 'vw';
-      l.style.setProperty('--d', (Math.random() * 15 + 15) + 's');
-      l.style.setProperty('--x', (Math.random() * 100 - 50) + 'px');
-      l.style.animationDelay = (Math.random() * 15) + 's';
-      lanternContainer.appendChild(l);
+    function triggerMidnight() {
+      clearInterval(timer);
+      document.getElementById('midnightOverlay').style.display = 'flex';
     }
 
-    // 4. Personalization
-    const nameInput = document.getElementById('userName');
-    const wishDisplay = document.getElementById('wishDisplay');
-    const mainTitle = document.getElementById('mainTitle');
-    nameInput.addEventListener('input', (e) => {
-      const name = e.target.value.trim();
-      if (name) {
-        wishDisplay.textContent = `Chúc mừng năm mới, ${name}! Vạn sự như ý!`;
-        mainTitle.textContent = `Chào ${name}!`;
+    // 2. Modals Control
+    const modal = document.getElementById('genericModal');
+    const modalBody = document.getElementById('modalContent');
+    function openModal(html) {
+      modalBody.innerHTML = html;
+      modal.classList.add('active');
+      lucide.createIcons();
+    }
+    function closeModal() { modal.classList.remove('active'); }
+    window.onclick = (e) => { if (e.target == modal) closeModal(); }
+
+    // 3. Hái Lộc
+    const locs = [
+      { t: "Đại Cát", q: "Vận trình rực rỡ, thi cử/công việc đều đỗ đầu!" },
+      { t: "Phát Tài", q: "Tiền bạc đầy kho, kinh doanh phát đạt bất ngờ!" },
+      { t: "Sức Khỏe", q: "Thân thể can trường, tâm trí minh mẫn suốt năm!" },
+      { t: "Bình An", q: "Gia đình êm ấm, tai qua nạn khỏi mọi bề!" },
+      { t: "Quý Nhân", q: "Có người giúp đỡ, mọi khó khăn đều hóa hư vô!" }
+    ];
+    function openLixi() {
+      const item = locs[Math.floor(Math.random() * locs.length)];
+      openModal(`
+            <i data-lucide="sparkles" style="width: 80px; height: 80px; color: var(--accent); margin-bottom: 2rem;"></i>
+            <h2 style="font-family: 'Cormorant Garamond', serif; color: white;">Lộc Xuân Của Bạn</h2>
+            <div class="loc-text">${item.t}</div>
+            <p style="color: #ccc; font-size: 1.1rem; font-style: italic;">"${item.q}"</p>
+            <button class="btn-premium" style="margin-top: 3rem; width: 100%" onclick="closeModal()">Đón Lộc</button>
+        `);
+    }
+
+    // 4. Tử Vi 2026
+    const zodiacs = ["Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
+    const zodiacTips = {
+      "Tý": "Năm 2026 là năm tam hợp, khởi đầu rực rỡ với nhiều dự án mới.",
+      "Sửu": "Công việc ổn định, tài lộc dồi dào, lưu ý sức khỏe cơ xương.",
+      "Dần": "Có nhiều biến chuyển tích cực, quý nhân phù trợ vào giữa năm.",
+      "Mão": "Tình duyên nở rộ, gia đạo êm ấm, tiền bạc chi tiêu hợp lý.",
+      "Thìn": "Sự nghiệp thăng tiến, có cơ hội đi xa hoặc mở rộng kinh doanh.",
+      "Tỵ": "Vận trình bình ổn, cần kiên trì hơn trong các quyết định lớn.",
+      "Ngọ": "Năm tuổi cần cẩn trọng nhưng sẽ có nhiều bài học quý giá.",
+      "Mùi": "Lộc ăn nói tốt, gặp gỡ được nhiều đối tác chất lượng.",
+      "Thân": "Trí tuệ minh mẫn, sáng tạo không ngừng, gặt hái thành công lớn.",
+      "Dậu": "Gia tăng tài sản, có hỷ tín trong gia đình.",
+      "Tuất": "Mọi việc hanh thông, là năm để bứt phá giới hạn bản thân.",
+      "Hợi": "Bình an tự tại, cuộc sống hưởng lạc, vạn sự như ý."
+    };
+    function openZodiac() {
+      let grid = zodiacs.map(z => `<div class="zodiac-item" onclick="showZodiacTip('${z}')">${z}</div>`).join('');
+      openModal(`
+            <h2 style="font-family: 'Cormorant Garamond', serif; color: var(--accent);">Tử Vi 12 Con Giáp 2026</h2>
+            <div class="zodiac-grid">${grid}</div>
+            <div id="zodiacResult" style="color: #eee; font-style: italic; min-height: 2.5rem;">Chọn con giáp của bạn...</div>
+            <button class="btn-premium" style="margin-top: 2.5rem; width: 100%" onclick="closeModal()">Đóng</button>
+        `);
+    }
+    window.showZodiacTip = (z) => {
+      document.querySelectorAll('.zodiac-item').forEach(i => i.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('zodiacResult').textContent = zodiacTips[z];
+    };
+
+    // 5. Music Control
+    let isPlaying = true;
+    function toggleMusic() {
+      const btn = document.getElementById('musicBtn');
+      const player = document.getElementById('player');
+      if (isPlaying) {
+        player.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        btn.classList.remove('playing');
       } else {
-        wishDisplay.textContent = "Vạn sự như ý – An khang thịnh vượng!";
-        mainTitle.textContent = "Bính Ngọ 2026";
+        player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        btn.classList.add('playing');
       }
+      isPlaying = !isPlaying;
+    }
+
+    // 6. Export Card
+    function exportCard() {
+      const region = document.getElementById('captureRegion');
+      html2canvas(region, { backgroundColor: '#111', scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `Thiep_Tet_2026_${document.getElementById('userName').value || 'User'}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+
+    // 7. Personalization
+    const nameInput = document.getElementById('userName');
+    nameInput.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      document.getElementById('wishDisplay').textContent = val ? `Chúc mừng năm mới, ${val}! Vạn sự như ý!` : "Vạn sự như ý – An khang thịnh vượng!";
+      document.getElementById('mainTitle').textContent = val ? `Chào ${val}!` : "Bính Ngọ 2026";
     });
 
-    // 5. Hái Lộc (Lì Xì)
-    const modal = document.getElementById('lixiModal');
-    const locRes = document.getElementById('locResult');
-    const locQuote = document.getElementById('locQuote');
-    const locs = [
-      { t: "Đại Cát", q: "Mọi việc hanh thông, tiền tài rủng rỉnh!" },
-      { t: "Phát Tài", q: "Làm ăn phát đạt, tiền vào như nước!" },
-      { t: "Sức Khỏe", q: "An khang thịnh vượng, dồi dào sức sống!" },
-      { t: "Bình An", q: "Gia đình hạnh phúc, tâm hồn thư thái!" },
-      { t: "Tình Duyên", q: "Thêm bạn thêm vui, thắm thiết duyên nồng!" }
-    ];
-    document.getElementById('lixiFab').onclick = () => {
-      const random = locs[Math.floor(Math.random() * locs.length)];
-      locRes.textContent = random.t;
-      locQuote.textContent = `"${random.q}"`;
-      modal.classList.add('active');
-    };
-    window.closeLixi = () => modal.classList.remove('active');
+    // 8. Visual Effects (Blossoms & Lanterns)
+    function setupVisuals() {
+      const container = document.getElementById('lanterns');
+      for (let i = 0; i < 10; i++) {
+        const l = document.createElement('div');
+        l.className = 'lantern';
+        l.style.left = Math.random() * 100 + 'vw';
+        l.style.setProperty('--d', (Math.random() * 15 + 15) + 's');
+        l.style.setProperty('--x', (Math.random() * 100 - 50) + 'px');
+        l.style.animationDelay = (Math.random() * 15) + 's';
+        container.appendChild(l);
+      }
 
-    // 6. Lịch Âm (Giả lập cho 2026)
+      const canvas = document.getElementById("blossomCanvas");
+      const ctx = canvas.getContext("2d");
+      let petals = [];
+      function res() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+      window.onresize = res; res();
+
+      class Petal {
+        constructor() { this.reset(); }
+        reset() {
+          this.x = Math.random() * canvas.width; this.y = -20;
+          this.size = Math.random() * 6 + 4; this.speedY = Math.random() * 1.2 + 0.8;
+          this.speedX = (Math.random() - 0.5) * 1; this.rot = Math.random() * 360;
+          this.rotSpeed = (Math.random() - 0.5) * 2; this.flip = 0;
+          this.flipSpeed = Math.random() * 0.03 + 0.02;
+        }
+        update() { this.y += this.speedY; this.x += this.speedX + Math.sin(this.y / 60) * 0.5; this.rot += this.rotSpeed; this.flip += this.flipSpeed; if (this.y > canvas.height + 20) this.reset(); }
+        draw() {
+          ctx.save(); ctx.translate(this.x, this.y); ctx.rotate(this.rot * Math.PI / 180); ctx.scale(Math.sin(this.flip), 1);
+          ctx.globalAlpha = 0.8; ctx.fillStyle = "#FFD700"; ctx.beginPath(); ctx.moveTo(0, 0);
+          ctx.bezierCurveTo(-this.size, -this.size, -this.size, this.size, 0, this.size);
+          ctx.bezierCurveTo(this.size, this.size, this.size, -this.size, 0, 0); ctx.fill();
+          ctx.fillStyle = "#FFA500"; ctx.beginPath(); ctx.arc(0, this.size / 2, this.size / 4, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+        }
+      }
+      for (let i = 0; i < 60; i++) petals.push(new Petal());
+      function a() { ctx.clearRect(0, 0, canvas.width, canvas.height); petals.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(a); }
+      a();
+    }
+    setupVisuals();
+
     function updateLunar() {
       const now = new Date();
       const jan19 = new Date('2026-01-19T00:00:00');
-      const diffDays = Math.floor((now - jan19) / 86400000);
-      let lunarDay = 1 + diffDays;
-      let info = "";
-      if (lunarDay <= 29) info = `Hôm nay: Ngày ${lunarDay} tháng Chạp năm Bính Ngọ`;
-      else if (lunarDay === 30) info = "Hôm nay: Đêm Giao Thừa Bính Ngọ";
-      else info = `Chào mừng Năm Mới 2026!`;
-      document.getElementById('lunarDateDisplay').textContent = info;
+      const diff = Math.floor((now - jan19) / 86400000);
+      let day = 1 + diff;
+      let info = day <= 29 ? `Ngày ${day} tháng Chạp năm Bính Ngọ` : (day === 30 ? "Đêm Giao Thừa Bính Ngọ" : "Chào mừng Năm Mới!");
+      document.getElementById('lunarDateDisplay').textContent = "Hôm nay: " + info;
     }
     updateLunar();
   </script>
