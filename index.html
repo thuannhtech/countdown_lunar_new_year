@@ -5,444 +5,682 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <title>Countdown Tết Bính Ngọ 2026 – Xuân Hy Vọng</title>
+  <meta name="description"
+    content="Chào đón Xuân Bính Ngọ 2026. Đếm ngược đến giao thừa với giao diện sang trọng, hoa mai rơi và hái lộc đầu xuân.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
     :root {
-      --bg: #0b1020;
-      --card: #0f1724;
-      --accent: #ffb703
+      --accent: #D4AF37;
+      --bg-dark: #0A0A0A;
+      --text-gold: #F3E5AB;
+      --glass: rgba(15, 5, 5, 0.85);
+      --glass-border: rgba(212, 175, 55, 0.25);
+      --shadow-premium: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(139, 0, 0, 0.15);
+      --lixi: #C0392B;
     }
 
     * {
-      box-sizing: border-box
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
     }
 
     html,
     body {
-      height: 100%;
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial
+      padding: 0;
+      background-color: var(--bg-dark);
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
     }
 
     body {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      background: url("https://res.cloudinary.com/duexspnwe/image/upload/v1765338533/sap-tet-roi_m2ecpu.jpg") center/cover no-repeat fixed;
-      color: #fff;
-      overflow-x: hidden;
+      justify-content: flex-start;
+      padding: 4rem 1rem;
+      position: relative;
     }
 
-    #fireworksCanvas {
+    /* Background Layers */
+    .bg-image {
       position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
+      background: #0A0A0A url("bg.png") center center / cover no-repeat;
+      filter: brightness(0.4) contrast(1.1);
+    }
+
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(139, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+      z-index: -5;
+    }
+
+    #blossomCanvas {
+      position: fixed;
+      inset: 0;
       pointer-events: none;
       z-index: 1;
     }
 
-    .wrap {
-      width: min(980px, 95%);
-      padding: 28px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
-      box-shadow: 0 10px 35px rgba(2, 6, 23, 0.7);
-      position: relative;
+    .lantern-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
       overflow: hidden;
-      z-index: 2;
     }
 
-    .blossom {
+    .lantern {
       position: absolute;
-      right: -120px;
-      top: -80px;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 192, 203, 0.18), transparent 20%),
-        radial-gradient(circle at 70% 70%, rgba(255, 240, 240, 0.06), transparent 40%);
-      transform: rotate(15deg);
-      filter: blur(6px);
-      opacity: 0.9;
+      width: 40px;
+      height: 55px;
+      background: radial-gradient(circle at center, #E74C3C, #C0392B);
+      border-radius: 10px;
+      opacity: 0.3;
+      animation: floatUp var(--d) linear infinite;
+      box-shadow: 0 0 20px rgba(231, 76, 60, 0.3);
+    }
+
+    .lantern::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 8px;
+      background: var(--accent);
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(110vh) translateX(0);
+      }
+
+      to {
+        transform: translateY(-20vh) translateX(var(--x));
+      }
+    }
+
+    /* Main Content */
+    .container {
+      position: relative;
+      z-index: 10;
+      width: min(1200px, 94%);
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.5rem;
+      width: 100%;
+      align-items: center;
+      animation: fadeInScale 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .main-card {
+      background: var(--glass);
+      backdrop-filter: blur(35px);
+      -webkit-backdrop-filter: blur(35px);
+      border: 1px solid var(--glass-border);
+      border-radius: 40px;
+      padding: 4.5rem 3rem;
+      box-shadow: var(--shadow-premium);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ornament {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 3px solid var(--accent);
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .ornament-tl {
+      top: 30px;
+      left: 30px;
+      border-right: 0;
+      border-bottom: 0;
+    }
+
+    .ornament-br {
+      bottom: 30px;
+      right: 30px;
+      border-left: 0;
+      border-top: 0;
+    }
+
+    .centerpiece-box {
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid var(--glass-border);
+      aspect-ratio: 1/1;
+      position: relative;
+    }
+
+    .centerpiece-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 12s ease-out;
+    }
+
+    .centerpiece-box:hover .centerpiece-img {
+      transform: scale(1.15);
     }
 
     h1 {
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: 0.4px
-    }
-
-    p.lead {
-      color: #fff;
-      margin: 8px 0 18px
-    }
-
-    .card {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-      backdrop-filter: blur(6px)
-    }
-
-    .segment {
-      min-width: 90px;
-      padding: 12px 14px;
-      border-radius: 10px;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.0));
-    }
-
-    .num {
-      font-size: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      margin: 0 auto;
       font-weight: 700;
-      line-height: 1
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+      line-height: 1.2;
     }
 
-    .label {
-      font-size: 12px;
-      color: #cbd5e1;
-      margin-top: 6px
+    .subtitle {
+      font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+      color: var(--text-gold);
+      margin-top: 1rem;
+      margin-bottom: 2.5rem;
+      letter-spacing: 4px;
+      font-weight: 300;
+      text-transform: uppercase;
+      opacity: 0.8;
+      line-height: 1.5;
     }
 
-    .meta {
+    .countdown-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .unit-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2.5rem 0.5rem;
+      border-radius: 28px;
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+    }
+
+    .unit-box:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--accent);
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+    }
+
+    .val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: white;
+      display: block;
+    }
+
+    .lbl {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    .info-cluster {
       display: flex;
-      gap: 18px;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      padding-top: 2.5rem;
+    }
+
+    .date-badge {
+      font-size: 0.95rem;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.2rem 2rem;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      min-width: 250px;
+    }
+
+    .lunar-info {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-style: italic;
+      letter-spacing: 1px;
+    }
+
+    .personalize-box {
+      margin-top: 1rem;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .name-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      color: white;
+      text-align: center;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .name-input:focus {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+
+    .audio-player {
+      width: 100%;
+      height: 90px;
+      border-radius: 15px;
+      overflow: hidden;
+      opacity: 0.15;
+      transition: opacity 0.5s;
+    }
+
+    .audio-player:hover {
+      opacity: 0.9;
+    }
+
+    .wish-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--text-gold);
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+      text-align: center;
+      max-width: 800px;
+      line-height: 1.5;
+    }
+
+    /* Modal & Lixi */
+    #lixiFab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: var(--lixi);
+      border-radius: 50%;
+      display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 14px;
-      color: #fff;
-      font-size: 13px
+      color: white;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 10px 30px rgba(192, 57, 43, 0.5);
+      animation: pulse 2s infinite;
+      transition: transform 0.3s;
     }
 
-    footer {
-      margin-top: 18px;
+    #lixiFab:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(192, 57, 43, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(192, 57, 43, 0);
+      }
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-card {
+      background: var(--glass);
+      border: 1px solid var(--accent);
+      padding: 3rem;
+      border-radius: 30px;
       text-align: center;
-      color: #fff;
-      font-size: 13px
+      max-width: 400px;
+      width: 90%;
+      transform: scale(0.8);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    @media (max-width:520px) {
-      .card {
-        gap: 10px
+    .modal-overlay.active .modal-card {
+      transform: scale(1);
+    }
+
+    .loc-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin: 1.5rem 0;
+      font-weight: 700;
+    }
+
+    .close-btn {
+      margin-top: 2rem;
+      background: var(--accent);
+      color: black;
+      border: none;
+      padding: 0.8rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Animations */
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(40px);
       }
 
-      .num {
-        font-size: 30px
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .layout-grid {
+        grid-template-columns: 1fr;
       }
 
-      .segment {
-        min-width: 64px;
-        padding: 10px
+      .centerpiece-box {
+        order: -1;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .countdown-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      h1 {
+        font-size: 3rem;
+        letter-spacing: 4px;
+      }
+
+      .main-card {
+        padding: 3rem 1.5rem;
+      }
+
+      #lixiFab {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
       }
     }
   </style>
-  <!-- SEO Title -->
-  <title>Countdown Tết 2026 – Đếm Ngược Đến Mùng 1 Tết Âm Lịch</title>
-
-  <!-- SEO Description -->
-  <meta name="description"
-    content="Đếm ngược đến Tết Nguyên Đán 2026. Countdown thời gian còn lại đến Mùng 1 Tết – giao diện đẹp, pháo hoa, nhạc Tết và lời chúc may mắn. Chúc mừng năm mới!">
-
-  <!-- Keywords -->
-  <meta name="keywords"
-    content="countdown Tết, đếm ngược Tết, Tết 2026, mùng 1 Tết, lịch Tết, chúc mừng năm mới, pháo hoa Tết, đồng hồ đếm ngược, Tết Nguyên Đán">
-
-  <!-- Author -->
-  <meta name="author" content="Thuận Nguyễn" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://www.countdown-tet.asia" />
-
-  <!-- Open Graph (Facebook / Zalo) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Countdown Tết 2026 – Đếm Ngược Đến Mùng 1 Tết Âm Lịch" />
-  <meta property="og:description"
-    content="Cùng đếm ngược đến Tết Nguyên Đán 2026 với pháo hoa, nhạc nền và lời chúc Tết ngẫu nhiên mỗi lần mở trang." />
-  <meta property="og:image" content="https://res.cloudinary.com/duexspnwe/image/upload/v1765338533/sap-tet-roi_m2ecpu.jpg" />
-  <meta property="og:url" content="https://www.countdown-tet.asia" />
-  <meta property="og:site_name" content="Countdown Tết 2026" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Countdown Tết 2026 – Đếm Ngược Đến Mùng 1 Tết" />
-  <meta name="twitter:description" content="Đếm ngược đến Tết với pháo hoa & nhạc Tết. Chúc mừng năm mới!" />
-  <meta name="twitter:image" content="https://res.cloudinary.com/duexspnwe/image/upload/v1765338533/sap-tet-roi_m2ecpu.jpg" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png"
-    href="https://res.cloudinary.com/duexspnwe/image/upload/v1765338534/favicon_rqdcdj.png">
-
-  <!-- Structured Data JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Countdown Tết 2026",
-    "url": "https://www.countdown-tet.asia",
-    "description": "Đếm ngược tới Tết Nguyên Đán 2026 – giao diện đẹp, nhạc Tết, thơ Tết và pháo hoa.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Thuận Nguyễn"
-    }
-  }
-  </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XBBLG699WN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XBBLG699WN');
-</script>
-
-<!-- Vercel Speed Insights -->
-<script defer src="https://va.vercel-scripts.com/v1/speed-insights/script.js"></script>
-
-<!-- Vercel Web Analytics -->
-<script defer src="https://va.vercel-scripts.com/v1/web/script.js"></script>
 </head>
 
 <body>
+  <div class="bg-image"></div>
+  <div class="bg-overlay"></div>
+  <canvas id="blossomCanvas"></canvas>
+  <div class="lantern-container" id="lanterns"></div>
 
-  <!-- FIREWORKS -->
-  <canvas id="fireworksCanvas"></canvas>
+  <div id="lixiFab" title="Hái Lộc"><i data-lucide="mail"></i></div>
 
-  <div class="wrap" role="main">
-    <div class="blossom" aria-hidden="true"></div>
+  <div class="modal-overlay" id="lixiModal">
+    <div class="modal-card">
+      <i data-lucide="sparkles" style="width: 60px; height: 60px; color: var(--accent);"></i>
+      <h2 style="font-family: 'Cormorant Garamond', serif; color: white; margin-top: 1rem;">Lộc Đầu Xuân Bính Ngọ</h2>
+      <div class="loc-text" id="locResult">Bình An</div>
+      <p style="color: #ccc; font-style: italic;" id="locQuote">"Chúc bạn một năm mới vạn sự hanh thông!"</p>
+      <button class="close-btn" onclick="closeLixi()">Đóng</button>
+    </div>
+  </div>
 
-    <header>
-      <h1>Đếm ngược đến <strong>Mùng 1 Tết (Tết Nguyên Đán)</strong></h1>
-      <p class="lead">Chúc bạn và gia đình năm mới an khang – thịnh vượng!</p>
-    </header>
+  <div class="container">
+    <div class="layout-grid">
+      <main class="main-card">
+        <div class="ornament ornament-tl"></div>
+        <div class="ornament ornament-br"></div>
 
-    <!-- YouTube nhạc nền -->
-    <div style="margin:16px 0; text-align:center;">
-      <iframe width="100%" height="300"
-        src="https://www.youtube.com/embed/-0xf-CW4naw?list=RD-0xf-CW4naw&autoplay=1&mute=0"
-        title="Nhạc Tết Chill 2026 - Tết Này Con Sẽ Về - Nhạc Xuân Chill Nghe Là Muốn Về Nhà" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-      </iframe>
+        <header>
+          <h1 id="mainTitle">Bính Ngọ 2026</h1>
+          <p class="subtitle">Khởi đầu vạn sự hanh thông</p>
+        </header>
+
+        <div class="countdown-row" aria-live="polite">
+          <div class="unit-box"><span class="val" id="days">0</span><span class="lbl">Ngày</span></div>
+          <div class="unit-box"><span class="val" id="hours">00</span><span class="lbl">Giờ</span></div>
+          <div class="unit-box"><span class="val" id="minutes">00</span><span class="lbl">Phút</span></div>
+          <div class="unit-box"><span class="val" id="seconds">00</span><span class="lbl">Giây</span></div>
+        </div>
+
+        <div class="info-cluster">
+          <div class="date-badge">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <i data-lucide="calendar" style="width: 20px; color: var(--accent);"></i>
+              <span>Mùng 1 Tết: <strong>17/02/2026</strong></span>
+            </div>
+            <div class="lunar-info" id="lunarDateDisplay">Hôm nay: Đang cập nhật...</div>
+          </div>
+
+          <div class="personalize-box">
+            <input type="text" id="userName" class="name-input" placeholder="Nhập tên bạn..." maxlength="20">
+          </div>
+
+          <div class="audio-player">
+            <iframe width="100%" height="90"
+              src="https://www.youtube.com/embed/-0xf-CW4naw?autoplay=1&mute=0&loop=1&playlist=-0xf-CW4naw"
+              title="Tết Music" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+          </div>
+        </div>
+      </main>
+
+      <div class="centerpiece-box">
+        <img src="cp.png" alt="Tet Centerpiece" class="centerpiece-img" />
+      </div>
     </div>
 
-    <section class="card" aria-live="polite">
-      <div class="segment">
-        <div class="num" id="days">0</div>
-        <div class="label">Ngày</div>
-      </div>
-      <div class="segment">
-        <div class="num" id="hours">0</div>
-        <div class="label">Giờ</div>
-      </div>
-      <div class="segment">
-        <div class="num" id="minutes">0</div>
-        <div class="label">Phút</div>
-      </div>
-      <div class="segment">
-        <div class="num" id="seconds">0</div>
-        <div class="label">Giây</div>
-      </div>
-    </section>
-
-    <div class="meta">
-      <div id="targetLabel">Mục tiêu: <strong>Mùng 1 Tết — 17/02/2026</strong> (00:00:00 Asia/Ho_Chi_Minh)</div>
-    </div>
-
-    <footer>Made with ❤️ — Chúc mừng năm mới!</footer>
-    <footer id="tetFooter">Made with ❤️ — Chúc mừng năm mới!</footer>
+    <div class="wish-text" id="wishDisplay">Vạn sự như ý – An khang thịnh vượng!</div>
   </div>
 
   <script>
-    /* ====================== COUNTDOWN ====================== */
-    let target = new Date('2026-02-17T00:00:00+07:00');
+    lucide.createIcons();
 
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
+    // 1. Countdown Logic
+    const targetDate = new Date('2026-02-17T00:00:00+07:00');
+    const displays = {
+      d: document.getElementById('days'),
+      h: document.getElementById('hours'),
+      m: document.getElementById('minutes'),
+      s: document.getElementById('seconds')
+    };
 
     function update() {
-      const now = new Date();
-      let diff = Math.floor((target - now) / 1000);
-
+      const diff = targetDate - new Date();
       if (diff <= 0) {
-        daysEl.textContent = hoursEl.textContent = minutesEl.textContent = secondsEl.textContent = "0";
+        Object.values(displays).forEach(d => d.textContent = '00');
         return;
       }
-
-      const days = Math.floor(diff / (24 * 3600));
-      diff -= days * 24 * 3600;
-      const hours = Math.floor(diff / 3600);
-      diff -= hours * 3600;
-      const minutes = Math.floor(diff / 60);
-      const seconds = diff - minutes * 60;
-
-      daysEl.textContent = days;
-      hoursEl.textContent = String(hours).padStart(2, '0');
-      minutesEl.textContent = String(minutes).padStart(2, '0');
-      secondsEl.textContent = String(seconds).padStart(2, '0');
+      displays.d.textContent = Math.floor(diff / 86400000);
+      displays.h.textContent = Math.floor((diff / 3600000) % 24).toString().padStart(2, '0');
+      displays.m.textContent = Math.floor((diff / 60000) % 60).toString().padStart(2, '0');
+      displays.s.textContent = Math.floor((diff / 1000) % 60).toString().padStart(2, '0');
     }
-
-    setInterval(update, 250);
+    setInterval(update, 1000);
     update();
 
-    /* ====================== FIREWORKS ====================== */
-    const fwCanvas = document.getElementById("fireworksCanvas");
-    const ctx = fwCanvas.getContext("2d");
+    // 2. Falling Blossoms (Hoa Mai)
+    const canvas = document.getElementById("blossomCanvas");
+    const ctx = canvas.getContext("2d");
+    let petals = [];
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.onresize = resize; resize();
 
-    function resizeCanvas() {
-      fwCanvas.width = window.innerWidth;
-      fwCanvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.onresize = resizeCanvas;
-
-    let fireworks = [];
-
-    function random(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-
-    class Firework {
-      constructor() {
-        this.x = random(0, fwCanvas.width);
-        this.y = fwCanvas.height;
-        this.targetX = random(100, fwCanvas.width - 100);
-        this.targetY = random(50, fwCanvas.height / 2);
-        this.size = 2;
-        this.speed = 6;
-        this.angle = Math.atan2(this.targetY - this.y, this.targetX - this.x);
-        this.exploded = false;
-        this.particles = [];
-        this.color = `hsl(${Math.floor(random(0, 360))}, 90%, 60%)`;
+    class Petal {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = -20;
+        this.size = Math.random() * 6 + 4;
+        this.speedY = Math.random() * 1.2 + 0.8;
+        this.speedX = (Math.random() - 0.5) * 1;
+        this.rot = Math.random() * 360;
+        this.rotSpeed = (Math.random() - 0.5) * 2;
+        this.flip = 0;
+        this.flipSpeed = Math.random() * 0.03 + 0.02;
       }
-
       update() {
-        if (!this.exploded) {
-          this.x += Math.cos(this.angle) * this.speed;
-          this.y += Math.sin(this.angle) * this.speed;
-
-          if (Math.abs(this.x - this.targetX) < 6 && Math.abs(this.y - this.targetY) < 6) {
-            this.exploded = true;
-            this.explode();
-          }
-        } else {
-          this.particles.forEach(p => p.update());
-        }
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(this.y / 60) * 0.5;
+        this.rot += this.rotSpeed;
+        this.flip += this.flipSpeed;
+        if (this.y > canvas.height + 20) this.reset();
       }
-
-      explode() {
-        for (let i = 0; i < 30; i++) {
-          this.particles.push(new Particle(this.x, this.y, this.color));
-        }
-      }
-
-      draw() {
-        if (!this.exploded) {
-          ctx.beginPath();
-          ctx.fillStyle = this.color;
-          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fill();
-        } else {
-          this.particles.forEach(p => p.draw());
-        }
-      }
-    }
-
-    class Particle {
-      constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.size = random(1, 3);
-        this.speed = random(1, 6);
-        this.angle = random(0, Math.PI * 2);
-        this.color = color;
-        this.alpha = 1;
-        this.decay = random(0.01, 0.03);
-      }
-
-      update() {
-        this.x += Math.cos(this.angle) * this.speed;
-        this.y += Math.sin(this.angle) * this.speed + 0.4;
-        this.alpha -= this.decay;
-      }
-
       draw() {
         ctx.save();
-        ctx.globalAlpha = this.alpha;
-        ctx.fillStyle = this.color;
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rot * Math.PI / 180);
+        ctx.scale(Math.sin(this.flip), 1);
+        ctx.globalAlpha = 0.8;
+        ctx.fillStyle = "#FFD700";
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-this.size, -this.size, -this.size, this.size, 0, this.size);
+        ctx.bezierCurveTo(this.size, this.size, this.size, -this.size, 0, 0);
+        ctx.fill();
+        ctx.fillStyle = "#FFA500";
+        ctx.beginPath();
+        ctx.arc(0, this.size / 2, this.size / 4, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
     }
+    for (let i = 0; i < 60; i++) petals.push(new Petal());
+    function anim() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      petals.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(anim);
+    }
+    anim();
 
-    function animateFireworks() {
-      ctx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
+    // 3. Floating Lanterns
+    const lanternContainer = document.getElementById('lanterns');
+    for (let i = 0; i < 8; i++) {
+      const l = document.createElement('div');
+      l.className = 'lantern';
+      l.style.left = Math.random() * 100 + 'vw';
+      l.style.setProperty('--d', (Math.random() * 15 + 15) + 's');
+      l.style.setProperty('--x', (Math.random() * 100 - 50) + 'px');
+      l.style.animationDelay = (Math.random() * 15) + 's';
+      lanternContainer.appendChild(l);
+    }
 
-      if (Math.random() < 0.08) {
-        fireworks.push(new Firework());
+    // 4. Personalization
+    const nameInput = document.getElementById('userName');
+    const wishDisplay = document.getElementById('wishDisplay');
+    const mainTitle = document.getElementById('mainTitle');
+    nameInput.addEventListener('input', (e) => {
+      const name = e.target.value.trim();
+      if (name) {
+        wishDisplay.textContent = `Chúc mừng năm mới, ${name}! Vạn sự như ý!`;
+        mainTitle.textContent = `Chào ${name}!`;
+      } else {
+        wishDisplay.textContent = "Vạn sự như ý – An khang thịnh vượng!";
+        mainTitle.textContent = "Bính Ngọ 2026";
       }
+    });
 
-      fireworks = fireworks.filter(fw => {
-        fw.update();
-        fw.draw();
-        return fw.exploded ? fw.particles.some(p => p.alpha > 0) : true;
-      });
-
-      requestAnimationFrame(animateFireworks);
-    }
-
-    animateFireworks();
-
-
-    const wishes = [
-      // --- LỜI CHÚC NGẮN ---
-      "Chúc mừng năm mới – An khang thịnh vượng!",
-      "Vạn sự như ý – Tỷ sự như mơ!",
-      "Tấn tài – Tấn lộc – Tấn bình an!",
-      "Năm mới phú quý – Bình an – May mắn!",
-      "Chúc bạn đong đầy hạnh phúc – Trọn vẹn yêu thương!",
-      "Xuân an vui – Tết đong đầy!",
-
-      // --- LỜI CHÚC DÀI ---
-      "Năm mới chúc bạn sức khỏe dồi dào, công việc thuận lợi, tiền bạc dồi dào, gia đình luôn hạnh phúc!",
-      "Chúc năm mới mang đến thành công rực rỡ, hạnh phúc chan hòa và mọi điều như ý đến với bạn!",
-      "Tết đến rộn ràng – Mong bạn một năm bình an, tài lộc đầy nhà, nụ cười luôn nở trên môi!",
-      "Năm mới – Khởi đầu mới: Chúc bạn mạnh khỏe, may mắn và đạt được mọi mục tiêu!",
-
-      // --- THƠ TẾT 4 CÂU ---
-      "Xuân sang tài lộc tới,\nPhúc lộc ghé từng nhà.\nNăm mới bình an nhé,\nVạn sự sẽ hoan ca!",
-      "Tết đến xuân về rồi,\nChúc bạn nhiều niềm vui.\nHạnh phúc luôn rạng rỡ,\nMay mắn mãi theo sui!",
-      "Mai vàng khoe sắc thắm,\nĐào đỏ nở quanh sân.\nChúc bạn năm mới đẹp,\nVui khỏe phúc ngập tràn!",
-      "Nắng xuân vừa hé cửa,\nLộc mới đến mọi nhà.\nTết này thêm hạnh phúc,\nAn yên mãi nở hoa!",
-
-      // --- THƠ LỤC BÁT ---
-      "Xuân sang phúc lộc dạt dào,\nChúc cho hạnh phúc bước vào thênh thang.",
-      "Năm mới tài lộc trời ban,\nVạn điều may mắn ngập tràn quanh ta.",
-      "Xuân này hạnh phúc nở hoa,\nGia đình ấm áp – thật là tuyệt vui!",
-
-      // --- CHÚC VUI – HÀI HƯỚC ---
-      "Chúc bạn năm mới… tiền vô bồ bồ, tình vô bờ bến, công việc thì vô đối!",
-      "Tết đến khỏi lo nghĩ – tiền tiêu không hết thì để tôi tiêu phụ!",
-      "Chúc năm mới gầy bớt chút… nhưng ví thì dày thêm chút!",
-      "Năm mới chúc bạn ăn không lo mập – ngủ không lo muộn – tiền không lo thiếu!",
-      "Chúc bạn năm mới làm đâu thắng đó – ăn đâu trúng đó – ngủ đâu cũng ngon!"
+    // 5. Hái Lộc (Lì Xì)
+    const modal = document.getElementById('lixiModal');
+    const locRes = document.getElementById('locResult');
+    const locQuote = document.getElementById('locQuote');
+    const locs = [
+      { t: "Đại Cát", q: "Mọi việc hanh thông, tiền tài rủng rỉnh!" },
+      { t: "Phát Tài", q: "Làm ăn phát đạt, tiền vào như nước!" },
+      { t: "Sức Khỏe", q: "An khang thịnh vượng, dồi dào sức sống!" },
+      { t: "Bình An", q: "Gia đình hạnh phúc, tâm hồn thư thái!" },
+      { t: "Tình Duyên", q: "Thêm bạn thêm vui, thắm thiết duyên nồng!" }
     ];
+    document.getElementById('lixiFab').onclick = () => {
+      const random = locs[Math.floor(Math.random() * locs.length)];
+      locRes.textContent = random.t;
+      locQuote.textContent = `"${random.q}"`;
+      modal.classList.add('active');
+    };
+    window.closeLixi = () => modal.classList.remove('active');
 
-    // random + giữ xuống dòng cho thơ
-    function setRandomWish() {
-      const wish = wishes[Math.floor(Math.random() * wishes.length)];
-      document.getElementById("tetFooter").innerHTML = wish.replace(/\n/g, "<br>");
+    // 6. Lịch Âm (Giả lập cho 2026)
+    function updateLunar() {
+      const now = new Date();
+      const jan19 = new Date('2026-01-19T00:00:00');
+      const diffDays = Math.floor((now - jan19) / 86400000);
+      let lunarDay = 1 + diffDays;
+      let info = "";
+      if (lunarDay <= 29) info = `Hôm nay: Ngày ${lunarDay} tháng Chạp năm Bính Ngọ`;
+      else if (lunarDay === 30) info = "Hôm nay: Đêm Giao Thừa Bính Ngọ";
+      else info = `Chào mừng Năm Mới 2026!`;
+      document.getElementById('lunarDateDisplay').textContent = info;
     }
-
-    setRandomWish();
+    updateLunar();
   </script>
 </body>
 
